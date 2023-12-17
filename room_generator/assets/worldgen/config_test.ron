@@ -1,0 +1,11 @@
+(
+    start: [
+        "start"
+    ],
+    normal: [
+        "test"
+    ],
+    boss: [
+        "boss"
+    ]
+)

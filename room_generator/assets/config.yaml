@@ -1,0 +1,4 @@
+player_to_mouse_rotation_speed: 80.0
+camera_follow_player_speed: 5
+player_speed: 1000.0
+camera_scale: 2.0

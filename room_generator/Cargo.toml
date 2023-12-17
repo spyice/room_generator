@@ -1,0 +1,95 @@
+[package]
+name = "room_generator"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = "1.0.152"
+serde_yaml = "0.9.16"
+rand = "0.8.5"
+dyn-clone = "1.0.11"
+noise = "0.8.2"
+grid = "0.11.0"
+itertools = "0.11.0"
+fastrand = "2.0.1"
+delaunator = "1.0.2"
+petgraph = "0.6.4"
+bevy_rapier2d = "0.22.0"
+bevy_egui = "0.21.0"
+#bevy_editor_pls = "0.4.0"
+bevy_asset_loader = { version = "0.17", features = ["2d"] }
+bevy_text_mode = "0.2"
+bevy-inspector-egui = {version = "0.20.0", features = [] }
+bresenham = "0.1.1"
+ron = "0.8.1"
+pathfinding = "4.3.2"
+ordered-float = "4.1.1"
+iter_num_tools = "0.7.1"
+
+[dependencies.bevy]
+version = "0.11.2"
+# Disable the default features if there are any that you do not want
+default-features = false
+features = [
+  # These are the default features:
+  # (re-enable whichever you like)
+
+  # Bevy functionality:
+  "bevy_asset",         # Assets management
+  #"bevy_audio",         # Builtin audio
+  #"bevy_gilrs",         # Gamepad input support
+  "bevy_scene",         # Scenes management
+  "bevy_winit",         # Window management
+  "bevy_render",        # Rendering framework core
+  "bevy_core_pipeline", # Common rendering abstractions
+  "bevy_sprite",        # 2D (sprites) rendering
+  #"bevy_pbr",           # 3D (physically-based) rendering
+  #"bevy_gltf",          # GLTF 3D assets format support
+  "bevy_text",          # Text/font rendering
+  "bevy_ui",            # UI toolkit
+  #"animation",          # Animation support
+  "tonemapping_luts",   # Support different camera Tonemapping modes (embeds extra data)
+  "filesystem_watcher", # Asset hot-reloading
+  #"x11",                # Linux: Support X11 windowing system
+  #"android_shared_stdcxx", # For Android builds, use shared C++ library
+
+  # File formats:
+  "png",    # PNG image format for simple 2D images
+  #"hdr",    # HDR images
+  #"ktx2",   # Preferred format for GPU textures
+  #"zstd",   # ZSTD compression support in KTX2 files
+  #"vorbis", # Audio: OGG Vorbis
+
+  # These are other features that may be of interest:
+  # (add any of these that you need)
+
+  # Bevy functionality:
+  #"wayland",              # Linux: Support Wayland windowing system
+  "subpixel_glyph_atlas", # Subpixel antialiasing for text/fonts
+  "serialize",            # Support for `serde` Serialize/Deserialize
+  #"bevy_dynamic_plugin",  # Support for loading of `DynamicPlugin`s
+  #"accesskit_unix",       # AccessKit integration for UI Accessibility
+
+  # File formats:
+  #"dds",  # Alternative DirectX format for GPU textures, instead of KTX2
+  #"jpeg", # JPEG lossy format for 2D photos
+  #"bmp",  # Uncompressed BMP image format
+  #"tga",  # Truevision Targa image format
+  #"exr",  # OpenEXR advanced image format
+  "basis-universal", # Basis Universal GPU texture compression format
+  #"flac", # Audio: FLAC lossless format
+  #"mp3",  # Audio: MP3 format (not recommended)
+  #"wav",  # Audio: Uncompressed WAV
+  #"symphonia-all", # All Audio formats supported by the Symphonia library
+
+  # Development/Debug features:
+  #"dynamic_linking", # Dynamic linking for faster compile-times
+  #"trace",           # Enable tracing for performance measurement
+  #"detailed_trace",  # Make traces more verbose
+  #"trace_tracy",     # Tracing using `tracy`
+  #"trace_chrome",    # Tracing using the Chrome format
+  #"wgpu_trace",      # WGPU/rendering tracing
+]
+

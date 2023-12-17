@@ -1,0 +1,30 @@
+(
+    name: "normal_big_single",
+    rooms: {
+        "top": (
+            size: Range((40, 70), (40, 70)),
+            position: Fixed(-0, 0),
+            aesthetics: [
+                Pillars (
+                    Pillars (
+                        amount: 2,
+                        pillar_size: 3, 
+                        generation_type: BothAxes
+                    )
+                ),
+                CellularAutomata (
+                    CellularAutomata (
+                        iterations: 7,
+                        wall_percentage: 0.1
+                    )
+                )
+            ],
+        ),
+    },
+    connections: [
+
+    ],
+    modifiers: [
+
+    ],
+)

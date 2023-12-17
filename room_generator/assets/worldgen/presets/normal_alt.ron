@@ -1,0 +1,61 @@
+(
+    name: "normal_alt",
+    rooms: {
+        "left": (
+            size: Fixed((20, 20)),
+            position: Fixed(-20, -10),
+            aesthetics: [
+                CellularAutomata (
+                    CellularAutomata (
+                        iterations: 10,
+                        wall_percentage: 0.2
+                    )
+                ),
+                Pillars (
+                    Pillars (
+                        amount: 3,
+                        pillar_size: 2, 
+                        generation_type: BothAxes
+                    )
+                ),
+                CellularAutomata (
+                    CellularAutomata (
+                        iterations: 2,
+                        wall_percentage: 0.1
+                    )
+                ),
+            ],
+        ),
+        "right": (
+            size: Fixed((20, 20)),
+            position: Fixed(0, -10),
+            aesthetics: [
+                Pillars (
+                    Pillars (
+                        amount: 5,
+                        pillar_size: 2, 
+                        generation_type: BothAxes
+                    )
+                    
+                ),
+                CellularAutomata (
+                    CellularAutomata (
+                        iterations: 7,
+                        wall_percentage: 0.1
+                    )
+                )
+            ],
+        ),
+    },
+    connections: [
+        (
+            room1: "left",
+            room2: "right",
+        ),
+        /* (
+            room1: "bot",
+            room2: "right",
+        ), */
+    ],
+    modifiers: [],
+)

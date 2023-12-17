@@ -1,0 +1,30 @@
+(
+    name: "normal_rect",
+    rooms: {
+        "top": (
+            size: Range((20, 50), (20, 50)),
+            position: Fixed(-0, 0),
+            aesthetics: [
+                Pillars (
+                    Pillars (
+                        amount: 2,
+                        pillar_size: 3, 
+                        generation_type: BothAxes
+                    )
+                ),
+                CellularAutomata (
+                    CellularAutomata (
+                        iterations: 4,
+                        wall_percentage: 0.05
+                    )
+                )
+            ],
+        ),
+    },
+    connections: [
+
+    ],
+    modifiers: [
+
+    ],
+)

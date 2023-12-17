@@ -1,0 +1,62 @@
+(
+    name: "normal_topbot",
+    rooms: {
+        "bot": (
+            size: Fixed((20, 20)),
+            position: Fixed(0, 0),
+            aesthetics: [
+                /* Pillars (
+                    Pillars (
+                        amount: 2,
+                        pillar_size: 5, 
+                        generation_type: BothAxes
+                    )
+                ), */
+            ],
+        ),
+        /* "right": (
+            size: Fixed((20, 20)),
+            position: Offset(50, 5),
+        ), */
+        "top": (
+            size: Fixed((50, 50)),
+            position: Fixed(-15, 40),
+            aesthetics: [
+                Pillars (
+                    Pillars (
+                        amount: 3,
+                        pillar_size: 3, 
+                        generation_type: BothAxes
+                    )
+                ),
+                Pillars (
+                    Pillars (
+                        amount: 2,
+                        pillar_size: 10, 
+                        generation_type: BothAxes
+                    )
+                ),
+                CellularAutomata (
+                    CellularAutomata (
+                        iterations: 4,
+                        wall_percentage: 0.2
+                    )
+                )
+            ],
+        ),
+    },
+    connections: [
+        (
+            room1: "bot",
+            room2: "top",
+        ),
+        /* (
+            room1: "bot",
+            room2: "right",
+        ), */
+    ],
+    modifiers: [
+        NextTo("bot", "top"),
+        DistanceAway("top", "right", 20),
+    ],
+)

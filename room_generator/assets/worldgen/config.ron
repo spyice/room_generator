@@ -1,0 +1,14 @@
+(
+    start: [
+        "start"
+    ],
+    normal: [
+        "normal_rect",
+        "normal_alt",
+        "normal_topbot",
+        "normal_big_single"
+    ],
+    boss: [
+        "boss"
+    ]
+)

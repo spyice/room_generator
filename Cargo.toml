@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "room_generator",
+]
+
+[profile.dev] # Enable a small amount of optimization in debug mode
+opt-level = 1
+[profile.dev.package."*"] # Enable high optimizations for dependencies
+opt-level = 3

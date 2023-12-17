@@ -1,0 +1,30 @@
+(
+    name: "boss",
+    rooms: {
+        "main": (
+            size: Fixed((200, 100)),
+            position: Fixed(0, 0),
+            aesthetics: [
+                Pillars (
+                    Pillars (
+                        amount: 2,
+                        pillar_size: 15, 
+                        generation_type: BothAxes
+                    )
+                ),
+                CellularAutomata (
+                    CellularAutomata (
+                        iterations: 10,
+                        wall_percentage: 0.35
+                    )
+                )
+            ],
+        ),
+    },
+    connections: [
+        
+    ],
+    modifiers: [
+        
+    ],
+)

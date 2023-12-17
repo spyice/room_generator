@@ -1,0 +1,12 @@
+(
+    name: "start",
+    rooms: {
+        "main": (
+            size: Fixed((20, 20)),
+            position: Fixed(0, 0),
+            aesthetics: [],
+        ),
+    },
+    connections: [],
+    modifiers: [],
+)
