@@ -93,7 +93,7 @@ pub fn spawn_rooms_visuals(
                         anchor: Anchor::BottomLeft,
                         ..default()
                     },
-                    texture_atlas: atlases.mmro_atlas.clone(),
+                    texture_atlas: atlases.basic_tile.clone(),
                     transform: Transform::from_translation(Vec3::new(
                         x as f32 * worldgen.tile_size.x as f32,
                         y as f32 * worldgen.tile_size.y as f32,

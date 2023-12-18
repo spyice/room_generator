@@ -106,6 +106,7 @@ pub fn make_graphs(
             Some(&path_rooms),
             worldgen.graph_reassembly_percentage,
             &mut rng,
+            &map.map_area()
         ),
         main_path_rooms: path_rooms,
     };
@@ -189,6 +190,7 @@ fn reassemble_graph(
     main_path: Option<&Vec<usize>>,
     percentage: f32,
     rng: &mut WorldgenRng,
+    map_area: &MapArea
 ) -> MyGraph {
     // make sure that percentage is between 0 and 1
     let percentage = percentage.min(1.).max(0.);
@@ -197,8 +199,8 @@ fn reassemble_graph(
     let mut available_connections = all_connections.clone();
 
     // prepare "available_connections" by removing all MST edges from the graph
-    for edge in output.all_edges() {
-        available_connections.remove_edge(edge.0, edge.1);
+    for (a, b, _) in output.all_edges() {
+        available_connections.remove_edge(a, b);
     }
     // also remove all hull edges from the graph, not necessary, it just makes the output nicer.
     for (&a, &b) in triangulation.hull.iter().tuple_windows() {
@@ -210,7 +212,12 @@ fn reassemble_graph(
             available_connections.remove_node(*node);
         }
     }
+    // also do not consider initial connections
+    for (a, b) in map_area.initial_connections.iter() {
+        available_connections.remove_edge(*a, *b);
+    }
 
+    // add available connections back into graph
     for edge in available_connections.0.all_edges() {
         if rng.f32() <= percentage {
             output.add_edge(edge.0, edge.1, edge.2.clone());

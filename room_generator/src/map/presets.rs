@@ -190,8 +190,8 @@ pub fn generate_rooms_from_preset(
     for (index, (key, preset_room)) in preset.rooms.iter().enumerate() {
         
         name_to_id_map.insert(key, index);
-        let mut modifiers = preset.modifiers.clone();
-        modifiers.retain_mut(|modifier| {
+        //let mut modifiers = preset.modifiers.clone();
+        /* modifiers.retain_mut(|modifier| {
             match modifier {
                 PositionalModifier::NextTo(x, y) => {
                     key.eq(x) || key.eq(y)
@@ -203,9 +203,9 @@ pub fn generate_rooms_from_preset(
                     key.eq(x) || key.eq(y)
                 },
             }
-        });
+        }); */
         let dimensions = calculate_dimensions(preset_room, rng);
-        let details = calculate_details(preset_room);
+        let details = get_details(preset_room);
         
         rooms.push(RoomWithDetailsNoId {
             dimensions,
@@ -233,7 +233,7 @@ fn calculate_dimensions(preset_room: &PresetRoom, rng: &mut WorldgenRng) -> Room
     return dimensions;
 }
 
-fn calculate_details(preset_room: &PresetRoom) -> RoomDetails {
+fn get_details(preset_room: &PresetRoom) -> RoomDetails {
     RoomDetails {
         is_main: false,
         room_type: super::room::RoomType::Normal,

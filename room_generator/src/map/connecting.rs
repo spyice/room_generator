@@ -124,10 +124,10 @@ fn reduce_connections(
                     worldgen,
                 );
             }
-            RoomConnectionType::SeparatedNoSolution => {
+            /* RoomConnectionType::SeparatedNoSolution => {
                 //new_connections.push(connection); // CHANGE THIS
-            }
-            RoomConnectionType::Unknown => {
+            } */
+            _ => {
                 warn!("unknown RoomConnectionType while reducing connections");
             }
         }
@@ -420,7 +420,7 @@ fn create_hallway_dimensions(
         new_hallways = generate_l_shaped_hallway(
             left_room,
             right_room,
-            min_hallway_width, // change this. Please honest to0 god Please change this
+            min_hallway_width,
             max_hallway_width,
             &orientation.unwrap(),
         );
@@ -530,7 +530,7 @@ fn generate_straight_hallway(
 fn generate_l_shaped_hallway(
     left_room: &dyn StructureDimensions,
     right_room: &dyn StructureDimensions,
-    min_hallway_width: u32,
+    _min_hallway_width: u32,
     max_hallway_width: u32,
     orientation: &LHallwayOrientation,
 ) -> Vec<RoomDimensions> {

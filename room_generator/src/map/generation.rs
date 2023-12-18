@@ -57,12 +57,12 @@ impl MapArea {
             .collect::<_>();
         rooms
     }
-    pub fn mean_room_size_grid(&self) -> f32 {
+    /* pub fn mean_room_size_grid(&self) -> f32 {
         self.rooms
             .values()
             .fold(0., |a, b| a + b.get_area_grid() as f32) as f32
             / self.rooms.len() as f32
-    }
+    } */
     /* pub fn mean_room_size_world(&self, tile_size: UVec2) -> f32 {
         self.rooms
             .iter()
@@ -110,7 +110,7 @@ impl Default for WorldgenSettings {
         let settings = Self {
             tile_size: UVec2 { x: 8, y: 8 },
             global_seed: 44,
-            presets_to_spawn: 1,
+            presets_to_spawn: 5,
             spawn_range: 100,
             snap_to: 1,
             main_room_threshold_multiplier: -1.0,
@@ -203,12 +203,12 @@ pub fn generate_rooms(
         RoomDimensions {anchor: IVec2{x: 0, y: -5}, height: 30, length: 30}, 
         RoomDetails {is_main: true, room_type: super::room::RoomType::Normal, aesthetic_modifiers: vec![aesthetic] });
 
-    rooms.insert(0, Room::new(0, 20, 20, IVec2::new(-20, 0), true));
-    rooms.insert(1, middle);
+    rooms.insert(0, Room::new(0, 20, 20, IVec2::new(-30, 10), true));
+    rooms.insert(1, Room::new(1, 20, 20, IVec2::new(-0, 6), true));
     rooms.insert(2, Room::new(2, 20, 20, IVec2::new(30, 0), true));
 
     let initial_connections = vec![
-        (0, 1), (1, 2),
+        (0, 2),
     ];
 
 
@@ -219,14 +219,15 @@ pub fn generate_rooms(
         graph: None,
         connections: None,
     };
-}
- */
-pub fn determine_main_rooms(mut map: ResMut<MapResource>, worldgen: Res<WorldgenSettings>) {
-    let mean_room_size = map.map_area().mean_room_size_grid();
+} */
+
+pub fn determine_main_rooms(mut map: ResMut<MapResource>, _worldgen: Res<WorldgenSettings>) {
+    //let mean_room_size = map.map_area().mean_room_size_grid();
     for room in map.map_area_mut().rooms.values_mut() {
-        if room.get_area_grid() as f32 > mean_room_size * worldgen.main_room_threshold_multiplier {
+        room.details.is_main = true;
+        /* if room.get_area_grid() as f32 > mean_room_size * worldgen.main_room_threshold_multiplier {
             room.details.is_main = true;
-        }
+        } */
     }
 }
 

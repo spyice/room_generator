@@ -5,7 +5,12 @@
             size: Fixed((30, 30)),
             position: Fixed(-0, 0),
             aesthetics: [
-                
+                CellularAutomata (
+                    CellularAutomata (
+                        iterations: 50,
+                        wall_percentage: 0.4
+                    )
+                )
             ],
         ),
     },
