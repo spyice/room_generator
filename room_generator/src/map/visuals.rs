@@ -46,7 +46,7 @@ pub fn spawn_rooms_visuals(
                 let tile = room.get_tile(UVec2::new(x as u32, y as u32)).unwrap();
                 let color = match *tile {
                     Tile::Ground => Color::hex("#222222").unwrap(),
-                    Tile::Wall => Color::hex("#222222").unwrap(),
+                    Tile::Wall => Color::hex("#777777").unwrap(),
                 };
 
                 let tile_entity = commands.spawn(TextModeSpriteSheetBundle {
