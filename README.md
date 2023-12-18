@@ -19,3 +19,4 @@ How to control the presets
 How to control other things
 - camera zoom level / player speed can be found under UI -> 'Resources' ->' 'GameConfiguration'
 - visual connection lines can be found under UI -> 'Resources' -> 'WorldgenGizmos'
+- move the player using WASD
