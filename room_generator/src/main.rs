@@ -4,7 +4,7 @@ use std::{fs::File, io::Read, time::Duration};
 
 use crate::{
     camera::CameraPlugin,
-    map::{visuals::ColorPalettes, MapPlugin},
+    map::MapPlugin,
     player::PlayerPlugin,
 };
 
@@ -32,7 +32,6 @@ fn main() {
     let mut app = App::new();
     app.insert_resource(GameConfiguration::read_config_from_file());
     app.register_type::<GameConfiguration>();
-    app.insert_resource(ColorPalettes::init());
     app.add_state::<GameState>();
     app.add_loading_state(
         LoadingState::new(GameState::AssetLoading).continue_to_state(GameState::Playing),

@@ -6,36 +6,6 @@ use bevy::prelude::*;
 use bevy::sprite::Anchor;
 use bevy_text_mode::{TextModeSpriteSheetBundle, TextModeTextureAtlasSprite};
 use itertools::Itertools;
-use serde::{Deserialize, Serialize};
-
-pub type Palette = Vec<Color>;
-
-#[derive(Serialize, Deserialize, Debug, Resource)]
-pub struct ColorPalettes {
-    f_ground: Palette,
-    b_ground: Palette,
-    f_wall: Palette,
-    b_wall: Palette,
-}
-impl ColorPalettes {
-    pub fn init() -> Self {
-        Self {
-            f_ground: vec![Color::hex("#222222").unwrap()],
-            b_ground: vec![
-                Color::hex("#222222").unwrap(),
-                //Color::hex("#F1DEDE").unwrap(),
-            ],
-            f_wall: vec![
-                Color::hex("#777777").unwrap(),
-                //Color::hex("76657b").unwrap(),
-            ],
-            b_wall: vec![Color::hex("#777777").unwrap()],
-        }
-    }
-    pub fn get_random_from(&self, palette: &Palette) -> Color {
-        palette[fastrand::usize(0..999999) % palette.len()]
-    }
-}
 
 #[derive(Debug, Resource, Reflect)]
 #[reflect(Resource)]
@@ -62,7 +32,6 @@ pub fn spawn_rooms_visuals(
     mut commands: Commands,
     atlases: Res<TextureAtlases>,
     worldgen: Res<WorldgenSettings>,
-    palettes: Res<ColorPalettes>,
 ) {
     let map_area = map_res.map_area_mut();
     for room in map_area.rooms.values() {
@@ -75,21 +44,16 @@ pub fn spawn_rooms_visuals(
             for x in 0..room.length() {
                 // safety: x and y exist for sure
                 let tile = room.get_tile(UVec2::new(x as u32, y as u32)).unwrap();
-                let index = 0usize;
-                let fg = match *tile {
-                    Tile::Ground => palettes.get_random_from(&palettes.f_ground),
-                    Tile::Wall => palettes.get_random_from(&palettes.f_wall),
-                };
-                let bg = match *tile {
-                    Tile::Ground => palettes.get_random_from(&palettes.b_ground),
-                    Tile::Wall => palettes.get_random_from(&palettes.b_wall),
+                let color = match *tile {
+                    Tile::Ground => Color::hex("#222222").unwrap(),
+                    Tile::Wall => Color::hex("#222222").unwrap(),
                 };
 
                 let tile_entity = commands.spawn(TextModeSpriteSheetBundle {
                     sprite: TextModeTextureAtlasSprite {
-                        index,
-                        fg,
-                        bg,
+                        index: 0,
+                        fg: color,
+                        bg: color,
                         anchor: Anchor::BottomLeft,
                         ..default()
                     },
